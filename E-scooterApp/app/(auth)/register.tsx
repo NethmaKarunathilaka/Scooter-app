@@ -12,7 +12,7 @@ const RegisterPage: React.FC<RegisterPageProps> = ({ navigation }) => {
 
       <Image
         style={styles.image}
-        source={require('E:/programming/Mobile APP/E-scooterApp/assets/images/Scooter-login-page.png')}
+        source={require('E:/programming/Mobile APP/Scooter-app/E-scooterApp/assets/images/Scooter-register-page.png')}
       />
 
       <TextInput
@@ -29,14 +29,11 @@ const RegisterPage: React.FC<RegisterPageProps> = ({ navigation }) => {
         secureTextEntry
       />
 
-      {/* Login button */}
-     <Button title="Login" onPress={() => {/* handle login */}} />
-     <Link href="/(tabs)/explore">hello</Link>
-
-      {/* Register link */}
-      <TouchableOpacity onPress={() => navigation.navigate('Register')}>
-        <Text style={styles.registerText}>Register now</Text>
-      </TouchableOpacity>
+      
+     <Button title="Register"
+     color={'#FF6F00'}
+     onPress={() => {/* handle login */}} />
+     
     </View>
   );
 };

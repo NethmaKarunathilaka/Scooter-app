@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, FlatList, Image, StyleSheet } from 'react-native';
+import { View, Text, FlatList, Image, StyleSheet, Button,SafeAreaView, TouchableOpacity,} from 'react-native';
+import { FAB } from 'react-native-paper';
 
 // Define the type for each scooter item
 type ScooterItem = {
@@ -39,7 +40,8 @@ const scooterData: ScooterItem[] = [
 const HomePage: React.FC = () => {
   // Function to render each scooter item as a card
   const renderItem = ({ item }: { item: ScooterItem }) => (
-    <View style={styles.card}>
+   <TouchableOpacity  style={styles.card}> 
+  
       {/* Image */}
       <Image source={{ uri: item.image }} style={styles.image} />
       {/* Scooter Name */}
@@ -48,19 +50,27 @@ const HomePage: React.FC = () => {
       <Text style={styles.status}>Status: {item.status}</Text>
       {/* Scooter Description */}
       <Text style={styles.description}>{item.description}</Text>
-    </View>
+    
+    </TouchableOpacity>
   );
 //
   return (
     
     <View style={styles.container}>
+      <Text style={styles.title}>Hello nethma!</Text>
       <FlatList
         data={scooterData}
         keyExtractor={(item) => item.id}
         renderItem={renderItem}
         contentContainerStyle={styles.listContainer}
       />
+       <FAB
+        style={styles.fab}
+        icon="plus" // Icon for the button
+        onPress={() => console.log('Add new scooter')} // Action when pressed
+      />
       </View>
+     
   );
 };
 
@@ -93,18 +103,25 @@ const styles = StyleSheet.create({
     marginBottom: 10, // Space below the image
   },
   title: {
+   
     fontSize: 18, // Text size for title
     fontWeight: 'bold', // Bold text
     marginBottom: 5, // Space below the title
   },
   status: {
     fontSize: 14, // Text size for status
-    color: '#007AFF', // Blue text color
+    color: '#FF6F00', // Blue text color
     marginBottom: 10, // Space below the status
   },
   description: {
     fontSize: 14, // Text size for description
     color: '#6c757d', // Gray text color
+  },
+  fab: {
+    position: 'absolute',
+    right: 20,
+    bottom: 20,
+    backgroundColor: '#FF6F00', // Button color
   },
 });
 

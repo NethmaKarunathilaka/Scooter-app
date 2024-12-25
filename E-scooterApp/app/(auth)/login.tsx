@@ -11,7 +11,7 @@ const LoginPage = () => {
 
       <Image
         style={styles.image}
-        source={require('E:/programming/Mobile APP/E-scooterApp/assets/images/Scooter-login-page.png')}
+        source={require('E:/programming/Mobile APP/Scooter-app/E-scooterApp/assets/images/Scooter-login-page.png')}
       />
 
       <TextInput
@@ -25,7 +25,9 @@ const LoginPage = () => {
       />
 
       {/* Login button */}
-     <Button title="Login" onPress={() => {/* handle login */}} />
+     <Button title="Login" 
+     color={'#FF6F00'}
+     onPress={() => {/* handle login */}} />
      <Link href="/(tabs)/explore">hello</Link>
 
       {/* Register link */}
@@ -56,7 +58,7 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
   },
   registerText: {
-    color: '#FF8C00',
+    color: '#FF6F00',
     textAlign: 'center',
     marginTop: 10,
   },
