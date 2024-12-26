@@ -1,10 +1,19 @@
-import React from 'react';
-import { View, Text, TextInput, Button, Image, StyleSheet} from 'react-native';
+import React,{useState} from 'react';
+import { View, Text, TextInput, Button, Image, StyleSheet, Alert} from 'react-native';
 import { Link } from 'expo-router';
 
 
 
 const LoginPage = () => {
+
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = () => {
+    if(username==='admin' && password==='admin'){
+      Alert.alert('Success', 'You have successfully logged in!');
+  };
+};
 
   return (
     <View style={styles.container}>
@@ -17,17 +26,22 @@ const LoginPage = () => {
       <TextInput
         placeholder="Username"
         style={styles.input}
+        value={username}
+        onChangeText={setUsername}
       />
+
       <TextInput
         placeholder="Password"
         style={styles.input}
         secureTextEntry
+        value={password}
+        onChangeText={setPassword}
       />
 
       {/* Login button */}
      <Button title="Login" 
      color={'#FF6F00'}
-     onPress={() => {/* handle login */}} />
+     onPress={handleLogin}/>
      <Link href="/(tabs)/explore">hello</Link>
 
       {/* Register link */}
@@ -37,6 +51,7 @@ const LoginPage = () => {
     </View>
   );
 };
+
 
 const styles = StyleSheet.create({
   container: {
@@ -63,5 +78,6 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
 });
+
 
 export default LoginPage;

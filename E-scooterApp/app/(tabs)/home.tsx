@@ -37,7 +37,7 @@ const scooterData: ScooterItem[] = [
 ];
 
 // Define the HomePage component
-const HomePage: React.FC = () => {
+const HomePage = () => {
   // Function to render each scooter item as a card
   const renderItem = ({ item }: { item: ScooterItem }) => (
    <TouchableOpacity  style={styles.card}> 

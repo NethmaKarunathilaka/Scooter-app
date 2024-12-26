@@ -1,8 +1,10 @@
+import React from 'react';
 import { Text, View, StyleSheet,StatusBar} from 'react-native';
 import { Link } from 'expo-router';
 
 
-export default function Index() {
+const Index = () => {
+
   return (
     
     <View style={styles.container}>
@@ -35,3 +37,5 @@ const styles = StyleSheet.create({
         borderRadius: 5,
     },
 });
+
+export default Index;
