@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { FAB } from 'react-native-paper';
 import fetchScooterData from '@/services/scooterService';
+import {useCount} from '@/context/countContext';
+
 
 
 type ScooterItem = {
@@ -18,6 +20,11 @@ const HomePage = () => {
   const [scooterData, setScooterData] = useState<ScooterItem[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const {count, increment} = useCount();
+
+  const countScooters = () => {
+    increment();
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,7 +43,7 @@ const HomePage = () => {
   }, []);
 
   const renderItem = ({ item }: { item: ScooterItem }) => (
-    <TouchableOpacity style={styles.card}>
+    <TouchableOpacity style={styles.card} onPress={countScooters}>
       <Image source={{ uri: item.image }} style={styles.image} />
       <Text style={styles.title}>{item.name}</Text>
       <Text style={styles.status}>Status: {item.status}</Text>
@@ -59,8 +66,8 @@ const HomePage = () => {
       )}
       <FAB
         style={styles.fab}
-        icon="plus"
-        onPress={() => console.log('Add new scooter')}
+        label={`Scooters: ${count}`}
+        onPress={() => console.log('count:', count)}
       />
     </View>
   );

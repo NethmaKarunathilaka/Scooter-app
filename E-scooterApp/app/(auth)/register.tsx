@@ -1,22 +1,35 @@
 import React , {useState} from 'react';
-import { View, Text, TextInput, Button, Image, StyleSheet, TouchableOpacity,} from 'react-native';
+import { View, Text, TextInput, Button, Image, StyleSheet, TouchableOpacity,Alert} from 'react-native';
 import { Link } from 'expo-router';
+import {useRouter} from 'expo-router';
 import UserInput from '../../components/UserInput';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-type RegisterPageProps = {
-  navigation: any;
-};
 
 const RegisterPage =() => {
 
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigation = useRouter();
 
   const handleRegister = () => {
-    console.log('Username:', username);
-    console.log('Email:', email);
-    console.log('Password:');
+    if(!username || !email || !password){
+      Alert.alert('Please fill all fields');
+      return;
+    }
+
+    try{
+      const user = {username, password};
+      AsyncStorage.setItem('user', JSON.stringify(user));
+      Alert.alert('Success', 'You have successfully registered!');
+      navigation.push('/(auth)/login');
+    }
+    catch(error){
+      Alert.alert('Error', 'An error occurred. Please try again.');
+    }
+    
+
   };
   
   return (
