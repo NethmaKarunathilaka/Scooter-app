@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
 import { View, Text, TextInput, Button, Image, StyleSheet, Alert} from 'react-native';
 import { Link } from 'expo-router';
+import UserInput from '../../components/UserInput';
 
 
 
@@ -23,20 +24,19 @@ const LoginPage = () => {
         source={require('E:/programming/Mobile APP/Scooter-app/E-scooterApp/assets/images/Scooter-login-page.png')}
       />
 
-      <TextInput
+      <UserInput
         placeholder="Username"
-        style={styles.input}
         value={username}
         onChangeText={setUsername}
-      />
+        secureTextEntry={false}
+        />
 
-      <TextInput
+      <UserInput
         placeholder="Password"
-        style={styles.input}
-        secureTextEntry
         value={password}
         onChangeText={setPassword}
-      />
+        secureTextEntry={true}/>
+
 
       {/* Login button */}
      <Button title="Login" 
@@ -65,13 +65,7 @@ const styles = StyleSheet.create({
     height: '40%',
     marginBottom: 20,
   },
-  input: {
-    height: 40,
-    borderColor: '#ccc',
-    borderWidth: 1,
-    marginBottom: 15,
-    paddingLeft: 10,
-  },
+  
   registerText: {
     color: '#FF6F00',
     textAlign: 'center',

@@ -1,6 +1,7 @@
 import React , {useState} from 'react';
 import { View, Text, TextInput, Button, Image, StyleSheet, TouchableOpacity,} from 'react-native';
 import { Link } from 'expo-router';
+import UserInput from '../../components/UserInput';
 
 type RegisterPageProps = {
   navigation: any;
@@ -26,28 +27,26 @@ const RegisterPage =() => {
         source={require('E:/programming/Mobile APP/Scooter-app/E-scooterApp/assets/images/Scooter-register-page.png')}
       />
 
-      <TextInput
+      <UserInput
         placeholder="Username"
-        style={styles.input}
         value={username}
         onChangeText={setUsername}
+        secureTextEntry={false}
       />
 
-      <TextInput
+      <UserInput
         placeholder="Email"
-        style={styles.input}
         value={email}
         onChangeText={setEmail}
+        secureTextEntry={false}
       />
 
-      <TextInput
+      <UserInput
         placeholder="Password"
-        style={styles.input}
-        secureTextEntry
         value={password}
         onChangeText={setPassword}
+        secureTextEntry={true}
       />
-
       
      <Button title="Register"
      color={'#FF6F00'}
@@ -69,13 +68,7 @@ const styles = StyleSheet.create({
     height: '40%',
     marginBottom: 20,
   },
-  input: {
-    height: 40,
-    borderColor: '#ccc',
-    borderWidth: 1,
-    marginBottom: 15,
-    paddingLeft: 10,
-  },
+ 
   registerText: {
     color: '#FF8C00',
     textAlign: 'center',
