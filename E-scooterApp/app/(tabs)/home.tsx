@@ -1,9 +1,10 @@
-// HomePage.tsx
+
 import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { FAB } from 'react-native-paper';
 import fetchScooterData from '@/services/scooterService';
 import {useCount} from '@/context/countContext';
+import { useLocalSearchParams } from 'expo-router';
 
 
 
@@ -21,6 +22,7 @@ const HomePage = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const {count, increment} = useCount();
+  const{username} = useLocalSearchParams();
 
   const countScooters = () => {
     increment();
@@ -53,7 +55,7 @@ const HomePage = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>E-Scooter App</Text>
+      <Text style={styles.header}>Hello {username} !</Text>
       {loading && <Text style={styles.loadingText}>Loading scooters...</Text>}
       {error && <Text style={styles.errorText}>{error}</Text>}
       {!loading && !error && (
