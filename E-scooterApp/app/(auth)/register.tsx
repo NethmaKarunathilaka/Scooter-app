@@ -4,6 +4,7 @@ import { Link } from 'expo-router';
 import {useRouter} from 'expo-router';
 import UserInput from '../../components/UserInput';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import validInput from '@/utils/validInput';
 
 
 const RegisterPage =() => {
@@ -18,7 +19,14 @@ const RegisterPage =() => {
       Alert.alert('Please fill all fields');
       return;
     }
-
+    if(!validInput('email', email)){
+      Alert.alert('Invalid email');
+      return;
+    }
+    if(!validInput('password', password)){
+      Alert.alert('Password must be at least 6 characters long');
+      return;
+    }
     try{
       const user = {username, password};
       AsyncStorage.setItem('user', JSON.stringify(user));
